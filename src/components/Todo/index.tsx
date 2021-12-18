@@ -24,12 +24,18 @@ interface TodoItemProps {
   onToggle: (id: string, newFlag: boolean) => void;
 }
 
-function TodoItem({ name, value }: TodoItemProps) {
+function TodoItem({ name, value, id, onToggle }: TodoItemProps) {
+  const onClick = useCallback(() => {
+    onToggle(id, !value);
+  }, [id, onToggle, value]);
+  const eleId = `todo-item-${id}`;
+
   return (
-    <Row>
+    <Row data-role="todo-item">
       <Space size={8}>
-        <Checkbox checked={value} />
-        {name}
+        <Checkbox id={eleId} checked={value} onClick={onClick}>
+          <span>{name}</span>
+        </Checkbox>
       </Space>
     </Row>
   );
@@ -45,7 +51,7 @@ export function Todo({ title }: Props) {
   const onToggleItem = useCallback(
     (id: string, newFlag: boolean) => {
       setData((draft) => {
-        const item = draft.find((ele) => ele.id);
+        const item = draft.find((ele) => ele.id === id);
         if (item) {
           item.complete = newFlag;
         } else {
@@ -67,7 +73,7 @@ export function Todo({ title }: Props) {
   if (!fetchedData) return <div>loading...</div>;
 
   return (
-    <Layout.Content style={{margin: "10px 12px"}}>
+    <Layout.Content style={{ margin: "10px 12px" }}>
       <h2>TODO List</h2>
       <Alert type="success" message={`Completed count: ${completedCount}`} />
       {data.map((ele) => (
