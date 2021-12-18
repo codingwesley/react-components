@@ -7,7 +7,10 @@ const { TodoDefault } = composeStories(stories);
 
 it("todo component test example", () => {
   cy.intercept("GET", "/api/user", {
-    body: { name: "wesley.chen" },
+    body: [
+      { id: "1", name: "wesley.chen", complete: true },
+      { id: "2", name: "hello", complete: false },
+    ],
   }).as("queryUser");
 
   mount(<TodoDefault />);
