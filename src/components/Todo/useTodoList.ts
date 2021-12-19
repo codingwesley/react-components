@@ -1,12 +1,7 @@
 import { useCallback, useMemo, useEffect } from "react";
 import useSWR from "swr";
 import { useImmer } from "use-immer";
-
-const fetcher = (url: string) => {
-  return fetch(url).then((res) => {
-    return res.json();
-  });
-};
+import { fetchTodoList } from "./api";
 
 interface TodoItem {
   id: string;
@@ -17,7 +12,10 @@ type TodoList = TodoItem[];
 
 export function useTodoList() {
   const [todoList, setTodoList] = useImmer<TodoList>([]);
-  const { data: fetchedData } = useSWR<TodoList>("/api/user", fetcher);
+  const { data: fetchedData } = useSWR<TodoList>(
+    "fetchTodoList",
+    fetchTodoList
+  );
   const onToggleItem = useCallback(
     (id: string, newFlag: boolean) => {
       setTodoList((draft) => {

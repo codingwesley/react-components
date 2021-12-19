@@ -7,7 +7,7 @@ const { TodoDefault } = composeStories(stories);
 describe("Todo List", () => {
   beforeEach(() => {
     // GIVEN
-    cy.intercept("GET", "/api/user", {
+    cy.intercept("GET", "/api/todos", {
       body: [
         { id: "1", name: "wesley.chen", complete: true },
         { id: "2", name: "joy", complete: false },
