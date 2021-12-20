@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useTodoList test item toggle 1`] = `
+<div>
+  <main
+    class="ant-layout-content"
+    style="margin: 10px 12px;"
+  >
+    <h2>
+      test title
+    </h2>
+    <div
+      class="ant-alert ant-alert-success ant-alert-no-icon"
+      data-show="true"
+      role="alert"
+    >
+      <div
+        class="ant-alert-content"
+      >
+        <div
+          class="ant-alert-message"
+        >
+          Completed count: 2
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-row"
+      data-role="todo-item"
+    >
+      <div
+        class="ant-space ant-space-horizontal ant-space-align-center"
+      >
+        <div
+          class="ant-space-item"
+        >
+          <label
+            class="ant-checkbox-wrapper ant-checkbox-wrapper-checked"
+          >
+            <span
+              class="ant-checkbox ant-checkbox-checked"
+            >
+              <input
+                checked=""
+                class="ant-checkbox-input"
+                id="todo-item-1"
+                type="checkbox"
+                value=""
+              />
+              <span
+                class="ant-checkbox-inner"
+              />
+            </span>
+            <span>
+              <span>
+                wesley.chen
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-row"
+      data-role="todo-item"
+    >
+      <div
+        class="ant-space ant-space-horizontal ant-space-align-center"
+      >
+        <div
+          class="ant-space-item"
+        >
+          <label
+            class="ant-checkbox-wrapper ant-checkbox-wrapper-checked"
+          >
+            <span
+              class="ant-checkbox ant-checkbox-checked"
+            >
+              <input
+                class="ant-checkbox-input"
+                id="todo-item-2"
+                type="checkbox"
+                value=""
+              />
+              <span
+                class="ant-checkbox-inner"
+              />
+            </span>
+            <span>
+              <span>
+                joy
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+`;

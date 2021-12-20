@@ -1,3 +1,4 @@
+import { fireEvent, screen } from "@testing-library/react";
 import { render } from "react-dom";
 import { act } from "react-dom/test-utils";
 import { Todo } from "..";
@@ -40,12 +41,26 @@ describe("useTodoList test", () => {
     }
   });
 
-  it("fetch api call", () => {
-    act(() => {
+  it("fetch api call", async () => {
+    await act(async () => {
       render(<Todo title="test title" />, container);
     });
 
     expect(mockFetchTodoList).toBeCalled();
-    expect(container?.textContent).toContain("test title")
+    expect(container?.textContent).toContain("test title");
+    expect(container?.textContent).toContain("wesley.chen");
+    expect(container?.textContent).toContain("joy");
+  });
+
+  it("item toggle", async () => {
+    await act(async () => {
+      render(<Todo title="test title" />, container);
+    });
+
+    act(() => {
+      fireEvent.click(screen.getByLabelText(/joy/i));
+    });
+
+    expect(container).toMatchSnapshot();
   });
 });
