@@ -31,8 +31,7 @@ interface Props {
 }
 
 export function Todo({ title }: Props) {
-  const { todoList, fetchedData, onToggleItem, completedCount } = useTodoList();
-  if (!fetchedData) return <div>loading...</div>;
+  const { todoList, onToggleItem, completedCount } = useTodoList();
 
   return (
     <Layout.Content style={{ margin: "10px 12px" }}>

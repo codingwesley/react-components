@@ -1,9 +1,5 @@
-const fetcher = (url: string) => {
-  return fetch(url).then((res) => {
-    return res.json();
-  });
-};
+export const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-export function fetchTodoList() {
-  return fetcher("/api/todos");
+export async function fetchTodoList() {
+  return await fetcher("/api/todos");
 }

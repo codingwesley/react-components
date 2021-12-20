@@ -12,9 +12,10 @@ describe("Todo List", () => {
         { id: "1", name: "wesley.chen", complete: true },
         { id: "2", name: "joy", complete: false },
       ],
-    }).as("queryUser");
+    }).as("getTodos");
+
     mount(<TodoDefault />);
-    cy.wait("@queryUser");
+    cy.wait("@getTodos");
   });
 
   it("todo component test example", () => {
@@ -22,7 +23,7 @@ describe("Todo List", () => {
     cy.contains("wesley.chen").should("exist");
   });
 
-  it.only("todo item toggle", () => {
+  it("todo item toggle", () => {
     // WHEN active
     cy.get(`[data-role="todo-item"]:contains("joy") label`).click();
 

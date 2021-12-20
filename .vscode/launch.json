@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "node",
+            "name": "vscode-jest-tests",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "disableOptimisticBPs": true,
+            "runtimeExecutable": "yarn",
+            "protocol": "inspector",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "test",
+                "react-scripts",
+                "test",
+                "--runInBand",
+                "--watchAll=false"
+            ]
+        }
+    ]
+}

@@ -1,5 +1,4 @@
 import { useCallback, useMemo, useEffect } from "react";
-import useSWR from "swr";
 import { useImmer } from "use-immer";
 import { fetchTodoList } from "./api";
 
@@ -12,10 +11,6 @@ type TodoList = TodoItem[];
 
 export function useTodoList() {
   const [todoList, setTodoList] = useImmer<TodoList>([]);
-  const { data: fetchedData } = useSWR<TodoList>(
-    "fetchTodoList",
-    fetchTodoList
-  );
   const onToggleItem = useCallback(
     (id: string, newFlag: boolean) => {
       setTodoList((draft) => {
@@ -35,8 +30,10 @@ export function useTodoList() {
   );
 
   useEffect(() => {
-    setTodoList(fetchedData || []);
-  }, [fetchedData, setTodoList]);
+    fetchTodoList().then((todos) => {
+      setTodoList(todos || []);
+    });
+  }, [setTodoList]);
 
-  return { todoList, fetchedData, onToggleItem, completedCount };
+  return { todoList, onToggleItem, completedCount };
 }
